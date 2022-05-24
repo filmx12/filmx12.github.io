@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- นาย วีรภัทร จันทร์เรือง -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>18-js-array-car.html</title>
+    <script>
+        let car = ['toyota', 'Isuzu' ,'Mazda', 'Ford',]
+    </script>
+</head>
+<body>
+    <script>
+        //document.write(car[0] + '<br>')
+        //document.write(car[1] + '<br>')
+       // document.write(car[2] + '<br>')
+
+       //ดึงข้อมูลจาก arry โดยใช้for
+       //for (let i = 0; i < car.length; i++) {
+           //document.write(car[i] + '<br>')
+        //}
+
+        //ดึงข้อมูลจาก Array โดยใช้ while
+        //let i = 0
+        //while (i < car.length){
+           // document.write(car[i] + '<br>')
+           // i++
+           car[4] = 'MG'
+        car[5] = 'Honda'
+        car[4] = 'Nissan'
+        car.pop()
+        car.pop()
+        car.push('BMW')
+        car.shift()
+        car.unshift('Volvo')
+        //delete car[2]
+        car.sort()
+        car.reverse()
+        //}
+
+        //ดึงข้อมูล Array โดยใช้ for of
+        for (let i of car){
+            document.write(i + '<br>')
+        }
+    </script>
+</body>
+</html>
