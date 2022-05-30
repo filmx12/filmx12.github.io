@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- นาย วีรภัทร จันทร์เรือง -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script>
+         let sid = []
+        let name = []
+        let phone = []
+        let l_sid = []
+        let l_name = []
+        let l_phone = []
+    </script>
+    <title>29-js-bootstrap-input-local-storage.html</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+<style>
+    .jumbotron{
+        position: relative;
+        overflow: hidden;
+    }
+    video{
+        position: absolute;
+        z-index: 2;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    .container{
+        position: relative;
+        z-index: 2;
+    }
+</style>
+</head>
+<body style="background-color: #FAEBD7;">
+    <div class="jumbotron jumbotron-fluid mb-0 text-light">
+        <video src="https://cdn.videvo.net/videvo_files/video/free/2021-04/large_watermarked/210329_01B_Bali_1080p_027_preview.mp4" autoplay loop muted></video>
+        <div class="container">
+          <h1 class="display-4">Weerapat  Junrueang<h1>
+          <p class="lead">Information Technology</p>
+        </div>
+      </div>
+      <nav class="navbar navbar-expand-lg navbar-light bg-warning">
+        <a class="navbar-brand text-white" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto ">
+            <li class="nav-item active">
+              <a class="nav-link text-white" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="#">Link</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+                Dropdown
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item " href="#">Action</a>
+                <a class="dropdown-item " href="#">Another action</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item " href="#">Something else here</a>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled text-white">Disabled</a>
+            </li>
+          </ul>
+          <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
+          </form>
+        </div>
+      </nav>
+      <div class="container mt-4">
+        <!-- Content here -->
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="card w-100 mb-2" style="width: 28rem;">
+                    <div class="alert alert-warning h4" role="alert">
+                    บันทึกข้อมูลนักเรียน
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">
+
+                                <div class="form-group">
+                                    <label for="sid">รหัส</label>
+                                    <input type="text" class="form-control" name="sid"id="sid">
+                                </div>
+                                <div class="form-group">
+                                    <label for="name">ชื่อ-สกุล</label>
+                                    <input type="text" class="form-control" name="name" id="name">
+                                </div>
+                                <div class="form-group">
+                                    <label for="phone">เบอร์โทรศัพท์</label>
+                                    <input type="text" class="form-control" name="phone" id="phone">
+                                </div>
+
+                                
+                                <!-- ปุ่มบันทึก -->
+                              <button type="button" class="btn btn-primary" onclick="set_array_data()">บันทึก</button>
+                              <button type="button" class="btn btn-primary" onclick="set_data()">RESET</button>
+                              <button type="button" class="btn btn-success" onclick=" clear_storage()">clear Storage</button>
+                        
+                        <p id="output"></p> 
+                    </p>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+      </div>
+      <!-- ฟังก์ชั่นกดปุ่ม บันทึก -->
+      <script>
+        function clear_storage() {
+          localStorage.clear()
+        }
+
+        function clear_input() {
+          document.getElementById('sid').value =''
+          document.getElementById('name').value =''
+          document.getElementById('phone').value =''
+        }
+
+        function get_data() {
+          document.getElementById('output').innerHTML = localStorage.getItem('sid')+
+          '  '+localStorage.getItem('name')+'  '+localStorage.getItem('phone')
+        }
+        function set_data() {
+          localStorage.setItem('sid', document.getElementById('sid').value)
+          localStorage.setItem('name', document.getElementById('name').value)
+          localStorage.setItem('phone', document.getElementById('phone').value)
+          clear_input()
+          get_data()
+        }
+
+        function set_array_data() {
+            sid.push(document.getElementById('sid').value)
+            name.push(document.getElementById('name').value)
+            phone.push(document.getElementById('phone').value)
+            console.log(sid)
+            console.log(name)
+            console.log(phone)
+            localStorage.setItem('sid', JSON.stringify(sid))
+            localStorage.setItem('name', JSON.stringify(name))
+            localStorage.setItem('phone', JSON.stringify(phone))
+            clear_input()
+            get_array_data()
+        }
+
+        let show_data =''
+
+        function get_array_data() {
+            l_sid = JSON.parse(localStorage.getItem('sid'))
+            l_name = JSON.parse(localStorage.getItem('name'))
+            l_phone = JSON.parse(localStorage.getItem('phone'))
+            // console.log(l_sid)
+            for (let i = 0; i < l_sid.length; i++){
+                show_data += l_sid[i] + ' ' + l_name[i] + ' ' + l_phone[i] + '<br>'
+                document.getElementById('output').innerHTML = show_data
+            }
+            show_data = ''
+        }
+      </script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+</body>
+</html>
